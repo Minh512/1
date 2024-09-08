@@ -1,0 +1,33 @@
+int ledPin = 5;
+int buttonApin = 9;
+int buttonBpin = 8;
+
+byte leds = 0;
+
+void setup() 
+{
+  pinMode(ledPin, OUTPUT);
+  digitalWrite(ledPin, LOW);        // Ensure LED is off by default
+  pinMode(buttonApin, INPUT_PULLUP);  
+  pinMode(buttonBpin, INPUT_PULLUP);  
+}
+
+void loop() 
+{
+  if (digitalRead(buttonApin) == LOW)
+  {
+    digitalWrite(ledPin, HIGH); // Turn on LED when button A is pressed
+  }
+  
+  if (digitalRead(buttonBpin) == LOW)
+  {
+    // Flash the LED twice when button B is pressed
+    for (int i = 0; i < 2; i++) 
+    {
+      digitalWrite(ledPin, HIGH);  // Turn on LED
+      delay(200);                  // Wait 200ms (adjust as needed)
+      digitalWrite(ledPin, LOW);   // Turn off LED
+      delay(200);                  // Wait 200ms before next flash
+    }
+  }
+}
